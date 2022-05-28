@@ -8,24 +8,36 @@
         android:id="@+id/playerAddFragment"
         android:name="com.example.frolf2022.screen.PlayerAddFragment"
         android:label="PlayerAddFragment" />
+
     <fragment
         android:id="@+id/competitionsAddFragment"
         android:name="com.example.frolf2022.screen.CompetitionsAddFragment"
         android:label="CompetitionsAddFragment" />
+
     <fragment
         android:id="@+id/competitionsFragment"
         android:name="com.example.frolf2022.screen.CompetitionsFragment"
         android:label="CompetitionsFragment" >
         <action
             android:id="@+id/action_competitionsFragment_to_competitionsAddFragment"
-            app:destination="@id/competitionsAddFragment" />
+            app:destination="@id/competitionsAddFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+
     <fragment
         android:id="@+id/playersFragment"
         android:name="com.example.frolf2022.screen.PlayersFragment"
         android:label="PlayersFragment" >
         <action
             android:id="@+id/action_playersFragment_to_playerAddFragment"
-            app:destination="@id/playerAddFragment" />
+            app:destination="@id/playerAddFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+    
 </navigation>
