@@ -8,6 +8,6 @@ data class Hole (
     @PrimaryKey(autoGenerate = false)
     val holeAcount : Int,
     val movement: Int,
-    val nameCompetitions: String
-
+    val nameCompetitions: String,
+    val playerName: String
 )

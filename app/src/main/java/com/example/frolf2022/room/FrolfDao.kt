@@ -9,11 +9,12 @@ import com.example.discgolf.room.data.relations.CompetitionsAndHole
 import com.example.discgolf.room.data.relations.CompetitionsAndPlayer
 import com.example.discgolf.room.data.relations.PlayersResultsCrossRef
 
-@Dao
+//Data Access Object -> DAO
+@Dao //ten interfejs mowi nam na jakie operacje w bazie danych pozwalamy
 interface FrolfDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCompetitions(competitions: Competitions)
+    @Insert(onConflict = OnConflictStrategy.REPLACE) //IGNORE) -> oznacza ze np. jak pojawi sie dokladnie ten sam
+    suspend fun insertCompetitions(competitions: Competitions) //competitions to ma po prostu zignorwac
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPlayer(player: Player)

@@ -8,5 +8,6 @@ import androidx.room.PrimaryKey
 @Entity//nazywamy tabele z danymi
 data class Competitions(
     @PrimaryKey(autoGenerate = false)
-    val nameCompetitions: String
+    val nameCompetitions: String,
+    val playerName: String
 )

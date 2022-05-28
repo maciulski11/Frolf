@@ -10,6 +10,12 @@ import com.example.discgolf.room.data.Player
 import com.example.discgolf.room.data.Results
 import com.example.discgolf.room.data.relations.PlayersResultsCrossRef
 
+
+//TA KLASA MUSI BYC ABSTRAKCYJNA BO ROOMDATABSE TEGO WYMAGA!
+
+//entities -> co jest wejsciem dla bazy danych
+// version -> jaka to jest wersja bazy danych, im wiecej tym wieksza wersja
+//exportSchema -> export danych zawsze jest true i nie trzeba go pisac chyba ze chcemy flase
 @Database(
     entities = [
         Competitions::class,
@@ -19,26 +25,30 @@ import com.example.discgolf.room.data.relations.PlayersResultsCrossRef
         PlayersResultsCrossRef::class
     ],
 
-    version = 1
+    version = 2
 )
-abstract class FrolfDatabase: RoomDatabase(){
+abstract class FrolfDatabase : RoomDatabase() {
 
-    abstract val frolfDao : FrolfDao
+    //tworzymy abstrakcyjna fun ktora zwraca interfejs (uzytkownika lub objekt dostepu do danych)
+    abstract val frolfDao: FrolfDao
 
+    //tworzymy obiekt naszej bazy danych i mozemy stworzyc go tylko raz a pozniej go edytowac i zmieniac
     companion object {
         @Volatile
         private var INSTANCE: FrolfDatabase? = null
 
-        fun getInstance(context: Context): FrolfDatabase {
-            synchronized(this) {
-                return INSTANCE ?: Room.databaseBuilder(
+        fun getDatebase(context: Context): FrolfDatabase {
+            var instance = INSTANCE
+
+            if (instance == null){
+                instance = Room.databaseBuilder(
                     context.applicationContext,
                     FrolfDatabase::class.java,
-                    "competitions_database"
-                ).build().also {
-                    INSTANCE = it
-                }
+                    "competitions"
+                ).build()
             }
+
+            return instance
         }
     }
 }

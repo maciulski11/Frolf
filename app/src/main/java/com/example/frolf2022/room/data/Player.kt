@@ -7,7 +7,5 @@ import androidx.room.PrimaryKey
 @Entity//nazywamy tabele z danymi
 data class Player(
     @PrimaryKey(autoGenerate = false)
-    val playerName: String,
-    val nameCompetitions: String
-
+    val playerName: String
 )

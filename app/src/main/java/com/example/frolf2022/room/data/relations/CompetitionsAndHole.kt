@@ -8,8 +8,8 @@ import com.example.discgolf.room.data.Hole
 data class CompetitionsAndHole(
     @Embedded val competitions: Competitions,
     @Relation(
-        parentColumn = "nameCompetitions",
-        entityColumn = "nameCompetitions"
+        parentColumn = "playerName",
+        entityColumn = "playerName"
     )
     val hole: List<Hole>
 )
